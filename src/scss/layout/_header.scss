@@ -1,11 +1,12 @@
-.background__header {
-  background-image: url("./images/castillo-disney.jpeg");
-  width: 100%;
+.header {
+  background-image: url("./images/castillo-disney.png");
+  width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  color: white;
+  text-align: center;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
