@@ -52,7 +52,8 @@ body {
     gap: 20px; 
   }
   .data{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     font-size: 12px;
     padding: 20px 10px;
     &__favorites {

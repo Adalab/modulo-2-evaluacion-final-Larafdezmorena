@@ -9,7 +9,7 @@ const character = document.querySelector('.js__character-list');
 
 // VARIABLES GLOBALES
 let disneyCharacters = [];
-let disneyFavorites = JSON.parse(localStorage.getItem("disneyFavorites")) || [];
+//let disneyFavorites = JSON.parse(localStorage.getItem("disneyFavorites")) || [];
 
 
 // CÓDIGO CUANDO INICIA LA PÁGINA
