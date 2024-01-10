@@ -56,6 +56,7 @@ body {
     grid-template-columns: 1fr 3fr;
     font-size: 12px;
     padding: 20px 10px;
+    gap: 40px;
     &__favorites {
       display: flex;
       align-items: center;
@@ -68,30 +69,34 @@ body {
     padding: 20px 10px;
     color: rgb(86, 86, 114);
   }
-  .card {
-    flex: 0 0 calc(33.333% - 20px);
-    display: flex;
-    flex-direction: column;
+  .character__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
+  }
+  .cards__list {
+    width: 10rem;
+    height: 12rem;
     align-items: center;
-    margin: auto;
-    background-color: white;
+    background-color: rgb(154, 213, 206);
     box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
       0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
       0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
-    overflow: hidden;
-    padding: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    margin-left: 10px ;
     transition: 0.25s all;
-    width: 100vw;
     text-align: center;
-    box-sizing: border-box;
   }
-  .img_card {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+  .name {
+    color:rgb(101, 101, 140);
+    text-align: center;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
   }
-  .title_card {
-    font-weight: 600;
-    padding: 10px;
+  .img__card {
+    height: 10rem;
+    width: 9rem;
   }

@@ -20,8 +20,10 @@ let charactersData = [];
 function renderOne(characterData) {
     charactersResultUl.innerHTML += `
     <li class="cards__list js__characters-li">
-        <h3>${characterData.name}</h3>
-        <img src="${characterData.imageUrl}"/>
+        
+        <img class="img__card" src="${characterData.imageUrl}"/>    
+        <h3 class="name">${characterData.name}</h3>
+        
         </li>
     `;
 }
@@ -41,8 +43,9 @@ for( const characterLi of allCharactersLi) {
 // FUNCIONES DE EVENTOS (HANDLER)
 
 function handleClickResult(event) {
+    console.log('click');
     const clickedLi = event.currentTarget;
-    clickedLi.classList.toggle('favorites')
+    clickedLi.classList.toggle('favorites');
 }
 
 // EVENTOS
@@ -53,7 +56,7 @@ renderAll();
 fetch ('//api.disneyapi.dev/character?pageSize=50')
 .then( response => response.json())
 .then( data => {
-    console.log(data.data);
+
 
     charactersData = data.data;
 
