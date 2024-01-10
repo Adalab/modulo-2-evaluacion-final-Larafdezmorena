@@ -10,16 +10,16 @@ const charactersResultUl = document.querySelector('.js__character-list');
 // VARIABLES DE DATOS
 
 let charactersData = [];
-let favoritesData =[];
-
 
 //FUNCIONES
 
 function renderOne(characterData) {
+    const imageUrl = characterData.imageUrl ? characterData.imageUrl : "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+
     charactersResultUl.innerHTML += `
-        <li class="cards__list js__characters-li" data-id="${characterData.id}">
+        <li class="cards__list js__characters-li" data-id="${characterData._id}">
         
-            <img class="img__card" src="${characterData.imageUrl}"/>    
+            <img class="img__card" src="${imageUrl}"/>    
             <h3 class="name">${characterData.name}</h3>
         
         </li>
@@ -27,9 +27,9 @@ function renderOne(characterData) {
 
 }
 
-function renderAll () { 
+function renderAll () {
     charactersResultUl.innerHTML = '';
-    
+
     for ( const eachCharacter of charactersData ) {
         renderOne ( eachCharacter );
     }
@@ -37,48 +37,40 @@ function renderAll () {
     const allCharactersLi = document.querySelectorAll('.js__characters-li');
 
     for( const characterLi of allCharactersLi) {
-    characterLi.addEventListener('click', handleClickResult);
+        characterLi.addEventListener('click', handleClickResult);
     }
 }
 
 // FUNCIONES DE EVENTOS (HANDLER)
 
 function handleClickResult(event) {
-    console.log('click');
     const clickedLi = event.currentTarget;
-    
+
     clickedLi.classList.toggle('favorites');
 
-    clickedLi.dataset.id;
+    const selectedCharacterId = parseInt(clickedLi.dataset.id);
 
-    const selectedCharacterOb = charactersData.find( oneCharacter => oneCharacter._id === parseIntclickedLi.dataset.id );
-    
-    if (selectedCharacterOb) {
-        const imageUrl = selectedCharacterOb.imageUrl || "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
-    
-        favoritesUl.innerHTML += `
-            <li class="cards__list js__characters-li">
-        
-                <img class="img__card" src="${selectedCharacterOb.imageUrl}"/>    
-                <h3 class="name">${selectedCharacterOb.name}</h3>
-    
-            </li>
-        `;
+    // Verificar si el personaje ya está en la lista de favoritos
+    const isAlreadyInFavorites = favoritesUl.querySelector(`[data-id="${selectedCharacterId}"]`);
+
+    if (!isAlreadyInFavorites) {
+        const selectedCharacterOb = charactersData.find(oneCharacter => {
+            return oneCharacter._id === selectedCharacterId;
+        });
+
+        if (selectedCharacterOb) {
+            
+            const imageUrl = selectedCharacterOb.imageUrl ? selectedCharacterOb.imageUrl : "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
+
+            favoritesUl.innerHTML += `
+                <li class="cards__list js__characters-li" data-id="${selectedCharacterId}">
+                    <img class="img__card" src="${imageUrl}"/>    
+                    <h3 class="name">${selectedCharacterOb.name}</h3>
+                </li>
+            `;
+        }
     }
 }
-
-function createFav (character) {
-
-    const cardFav = document.createElement('div');
-
-    cardFav.classList.add('cardFav', 'js_card');
-
-    cardFav.setAttribute('id', charactersData.id);
-
-
-}
-
-
 
 // EVENTOS
 
@@ -88,14 +80,11 @@ form.addEventListener('submit', (event)=> {
     fetch(`//api.disneyapi.dev/character?name=${searchInput.value}`)
         .then(response => response.json())
         .then(data=> {
-            charactersData = data.character;
-
+            charactersData = data.data;
             renderAll();
-    })
-    .catch(error => console.error('Error al obtener datos:', error));
-}) ; 
-   
-
+        })
+        .catch(error => console.error('Error al obtener datos:', error));
+}) ;
 
 
 // CÓDIGO CUANDO CARGA LA PÁGINA
@@ -105,11 +94,6 @@ renderAll();
 fetch (`//api.disneyapi.dev/character?pageSize=50`)
     .then( response => response.json())
     .then( data => {
-
-
         charactersData = data.data;
-
         renderAll();
-});
-
-
+    });
