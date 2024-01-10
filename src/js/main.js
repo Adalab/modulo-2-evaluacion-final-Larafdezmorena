@@ -8,39 +8,7 @@ const charactersResultUl = document.querySelector('.js__character-list');
 
 
 // VARIABLES GLOBALES
-let disneyCharacters = [];
-//let disneyFavorites = JSON.parse(localStorage.getItem("disneyFavorites")) || [];
-
-
-// CÓDIGO CUANDO INICIA LA PÁGINA
-
-//se deben de mostrar los personajes
-
-//window.addEventListener('load', (event) =>{
-//ev.preventDefault()
-//});
-
-// EVENTOS
-
-
-
-// evento para buscar personajes al rellenar el input y click en el button
-
-
-//FUNCIONES
-
-function renderOne(characterData) {
-    charactersResultUl.innerHTML += `
-    <li class="cards__list">
-        <h3>${characterData.name}</h3>
-        <img src="${characterData.imageUrl}"/>
-        </li>
-    `;
-}
-
-// CÓDIGO CUANDO CARGA LA PÁGINA
-
-renderOne( {
+let charactersData = [{
     "_id": 112,
     "films": [
     "Hercules (film)"
@@ -63,6 +31,60 @@ renderOne( {
     "url": "https://api.disneyapi.dev/characters/112",
     "__v": 0
     },
+    {
+        "_id": 18,
+        "films": [
+        "The Fox and the Hound",
+        "The Fox and the Hound 2"
+        ],
+        "shortFilms": [],
+        "tvShows": [],
+        "videoGames": [],
+        "parkAttractions": [],
+        "allies": [],
+        "enemies": [],
+        "sourceUrl": "https://disney.fandom.com/wiki/Abigail_the_Cow",
+        "name": "Abigail the Cow",
+        "imageUrl": "https://static.wikia.nocookie.net/disney/images/0/05/Fox-disneyscreencaps_com-901.jpg",
+        "createdAt": "2021-04-12T01:26:03.413Z",
+        "updatedAt": "2021-12-20T20:39:18.032Z",
+        "url": "https://api.disneyapi.dev/characters/18",
+        "__v": 0
+        },
 
-);
+
+];
+//let disneyFavorites = JSON.parse(localStorage.getItem("disneyFavorites")) || [];
+
+
+// CÓDIGO CUANDO INICIA LA PÁGINA
+
+//se deben de mostrar los personajes
+
+//window.addEventListener('load', (event) =>{
+//ev.preventDefault()
+//});
+
+// EVENTOS
+
+
+//FUNCIONES
+
+function renderOne(characterData) {
+    charactersResultUl.innerHTML += `
+    <li class="cards__list">
+        <h3>${characterData.name}</h3>
+        <img src="${characterData.imageUrl}"/>
+        </li>
+    `;
+}
+
+// CÓDIGO CUANDO CARGA LA PÁGINA
+
+
+for ( const eachCharacter of charactersData ) {
+    renderOne ( eachCharacter );
+}
+
+
 
