@@ -9,7 +9,8 @@ const charactersResultUl = document.querySelector('.js__character-list');
 
 // VARIABLES DE DATOS
 
-let charactersData = [];
+let charactersData = [];  
+
 
 //FUNCIONES
 
@@ -63,9 +64,9 @@ function handleClickResult(event) {
             const imageUrl = selectedCharacterOb.imageUrl ? selectedCharacterOb.imageUrl : "https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";
 
             favoritesUl.innerHTML += `
-                <li class="cards__list js__characters-li" data-id="${selectedCharacterId}">
+                <li class="cards__favs js__characters-li" data-id="${selectedCharacterId}">
                     <img class="img__card" src="${imageUrl}"/>    
-                    <h3 class="name">${selectedCharacterOb.name}</h3>
+                    <h3 class="name__favs">${selectedCharacterOb.name}</h3>
                 </li>
             `;
         }
@@ -91,9 +92,26 @@ form.addEventListener('submit', (event)=> {
 
 renderAll();
 
-fetch (`//api.disneyapi.dev/character?pageSize=50`)
+
+const charactersInLS = JSON.parse( localStorage.getItem('disneyCharacters'));
+
+if (charactersInLS === null) {
+   
+    fetch (`//api.disneyapi.dev/character?pageSize=50`)
     .then( response => response.json())
     .then( data => {
         charactersData = data.data;
+        console.log(`llegan los datos`);
+        localStorage.setItem('disneyCharacters', JSON.stringify(charactersData));
+
         renderAll();
     });
+    
+}
+else {
+    charactersData = charactersInLS;
+    renderAll();
+}
+
+
+      
