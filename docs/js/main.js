@@ -1,14 +1,15 @@
-const o=document.querySelector(".js__input"),d=document.querySelector(".js__form"),i=document.querySelector(".js__favoritesUl"),l=document.querySelector(".js__character-list");let r=[];function f(e){const t=e.imageUrl?e.imageUrl:"https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";l.innerHTML+=`
+const d=document.querySelector(".js__input"),f=document.querySelector(".js__form"),l=document.querySelector(".js__favoritesUl"),o=document.querySelector(".js__character-list");let t=[];function h(e){const a=e.imageUrl?e.imageUrl:"https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";o.innerHTML+=`
         <li class="cards__list js__characters-li" data-id="${e._id}">
         
-            <img class="img__card" src="${t}"/>    
+            <img class="img__card" src="${a}"/>    
             <h3 class="name">${e.name}</h3>
         
         </li>
-    `}function n(){l.innerHTML="";for(const t of r)f(t);const e=document.querySelectorAll(".js__characters-li");for(const t of e)t.addEventListener("click",h)}function h(e){const t=e.currentTarget;t.classList.toggle("favorites");const s=parseInt(t.dataset.id);if(!i.querySelector(`[data-id="${s}"]`)){const a=r.find(c=>c._id===s);if(a){const c=a.imageUrl?a.imageUrl:"https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";i.innerHTML+=`
-                <li class="cards__favs js__characters-li" data-id="${s}">
-                    <img class="img__card" src="${c}"/>    
-                    <h3 class="name__favs">${a.name}</h3>
+    `}function r(){o.innerHTML="";for(const a of t)h(a);const e=document.querySelectorAll(".js__characters-li");for(const a of e)a.addEventListener("click",_)}function _(e){const a=e.currentTarget;a.classList.toggle("favorites");const c=parseInt(a.dataset.id);if(!l.querySelector(`[data-id="${c}"]`)){const s=t.find(n=>n._id===c);if(s){const n=s.imageUrl?s.imageUrl:"https://via.placeholder.com/210x295/ffffff/555555/?text=Disney";l.innerHTML+=`
+                <li class="cards__favs js__characters-li" data-id="${c}">
+                    <img class="img__card" src="${n}"/>    
+                    <h3 class="name__favs">${s.name}</h3>
+                    <span class="delete__icon js__delete-icon"><i class="fa-solid fa-trash"></i></span> 
                 </li>
-            `}}}d.addEventListener("submit",e=>{e.preventDefault(),fetch(`//api.disneyapi.dev/character?name=${o.value}`).then(t=>t.json()).then(t=>{r=t.data,n()}).catch(t=>console.error("Error al obtener datos:",t))});n();fetch("//api.disneyapi.dev/character?pageSize=50").then(e=>e.json()).then(e=>{r=e.data,n()});
+            `}}}f.addEventListener("submit",e=>{e.preventDefault(),fetch(`//api.disneyapi.dev/character?name=${d.value}`).then(a=>a.json()).then(a=>{t=a.data,r()}).catch(a=>console.error("Error al obtener datos:",a))});r();const i=JSON.parse(localStorage.getItem("disneyCharacters"));i===null?fetch("//api.disneyapi.dev/character?pageSize=50").then(e=>e.json()).then(e=>{t=e.data,console.log("llegan los datos"),localStorage.setItem("disneyCharacters",JSON.stringify(t)),r()}):(t=i,r());
 //# sourceMappingURL=main.js.map
