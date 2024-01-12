@@ -152,7 +152,9 @@ body {
     text-align: center;
     background-color: rgb(11, 64, 67);
     list-style: none;
-    border-radius: 5px
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
   }
   .name__favs {
     color:rgb(154, 213, 206);
@@ -161,4 +163,7 @@ body {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
   }
-
+  .delete__icon {
+    color: #9ad4ce;
+    font-size: 16px;
+  }

@@ -67,11 +67,14 @@ function handleClickResult(event) {
                 <li class="cards__favs js__characters-li" data-id="${selectedCharacterId}">
                     <img class="img__card" src="${imageUrl}"/>    
                     <h3 class="name__favs">${selectedCharacterOb.name}</h3>
+                    <span class="delete__icon js__delete-icon"><i class="fa-solid fa-trash"></i></span> 
                 </li>
             `;
         }
     }
 }
+
+
 
 // EVENTOS
 
