@@ -76,6 +76,7 @@ function handleClickResult(event) {
 
 
 
+
 // EVENTOS
 
 form.addEventListener('submit', (event)=> {
