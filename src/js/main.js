@@ -7,6 +7,7 @@ const favoritesUl = document.querySelector('.js__favoritesUl');
 const charactersResultUl = document.querySelector('.js__character-list');
 
 
+
 // VARIABLES DE DATOS
 
 let charactersData = [];  
@@ -22,7 +23,7 @@ function renderOne(characterData) {
         
             <img class="img__card" src="${imageUrl}"/>    
             <h3 class="name">${characterData.name}</h3>
-        
+            
         </li>
     `;
 
@@ -75,7 +76,6 @@ function handleClickResult(event) {
 }
 
 
-
 // EVENTOS
 
 form.addEventListener('submit', (event)=> {
@@ -115,6 +115,3 @@ else {
     charactersData = charactersInLS;
     renderAll();
 }
-
-
-      

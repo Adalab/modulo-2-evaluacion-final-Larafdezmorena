@@ -103,6 +103,7 @@ body {
     justify-content: center;
     padding: 20px 10px;
     color: rgb(86, 86, 114);
+    
   }
   .character__list {
     list-style: none;
@@ -118,9 +119,9 @@ body {
     box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
       0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
       0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
-    padding: 10px 10px;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 10px;
-    margin-left: 10px ;
+    
     transition: 0.25s all;
     text-align: center;
     border-radius: 5px;
@@ -136,8 +137,14 @@ body {
   .img__card {
     height: 10rem;
     width: 9rem;
+    border-radius: 115px;
   }
-  
+  .favorites__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .cards__favs {
     width: 10rem;
     height: 12rem;
@@ -145,14 +152,13 @@ body {
     box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%),
       0 0.9375rem 1.40625rem rgb(4 9 20 / 3%),
       0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
-    padding: 10px 10px;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 10px;
-    margin-left: 10px ;
     transition: 0.25s all;
     text-align: center;
     background-color: rgb(11, 64, 67);
     list-style: none;
-    border-radius: 5px;
+    border-radius: 111px;
     display: flex;
     flex-direction: column;
   }
